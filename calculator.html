@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+    <div id="calculator">
+        <div id="result">
+            <input type="text" id="result_area" readonly>
+        </div>
+        <div id="grid">
+            <button class="button gray" value="AC">AC</button>
+            <button id="delete" class="button gray" value="DEL">DEL</button>
+            <button class="button orange" value="/">/</button>
+            <button class="button dark_gray" value="7">7</button>
+            <button class="button dark_gray" value="8">8</button>
+            <button class="button dark_gray" value="9">9</button>
+            <button class="button orange" value="*">*</button>
+            <button class="button dark_gray" value="4">4</button>
+            <button class="button dark_gray" value="5">5</button>
+            <button class="button dark_gray" value="6">6</button>
+            <button class="button orange" value="-">-</button>
+            <button class="button dark_gray" value="1">1</button>
+            <button class="button dark_gray" value="2">2</button>
+            <button class="button dark_gray" value="3">3</button>
+            <button class="button orange" value="+">+</button>
+            <button id="zero" class="button dark_gray" value="0">0</button>
+            <button class="button dark_gray" value=".">.</button>
+            <button class="button orange" value="=">=</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const textArea = document.getElementById('result_area');
+        const buttons = document.querySelectorAll('#grid button');
+
+        // Define the set of operators
+        const operators = ['+', '-', '*', '/'];
+
+        // Loop through each button and add a click event listener
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                //Play click sound
+                const sound = new Audio('sound.mp3');
+                sound.volume = 0.05;
+                sound.play();
+
+                const value = this.value; // Get the value of the clicked button
+                const currentText = textArea.value; // Current content in textarea
+                const lastChar = currentText.slice(-1); // Get the last character in the textarea
+
+                // Handle different button functionality
+                if (value === 'AC') {
+                    textArea.value = ''; // Clear the textarea
+                } else if (value === 'DEL') {
+                    textArea.value = currentText.slice(0, -1); // Delete the last character
+                } else if (value === '=') {
+                    try {
+                        // Only evaluate if the last character is not an operator
+                        if (!operators.includes(lastChar)) {
+                            textArea.value = eval(currentText); // Evaluate the expression
+                        }
+                    } catch (error) {
+                        textArea.value = 'Error'; // Show error if expression is invalid
+                    }
+                } else if (operators.includes(value)) {
+                    // Prevent consecutive operators
+                    if (operators.includes(lastChar)) {
+                        // Replace the last operator with the new one
+                        textArea.value = currentText.slice(0, -1) + value;
+                    } else {
+                        textArea.value +=
+                            value; // Append the operator if the last char is not an operator
+                    }
+                } else {
+                    // Append the button's value to the textarea for numbers and other inputs
+                    textArea.value += value;
+                }
+            });
+        });
+    </script>
+
+    <script src="https://kit.fontawesome.com/4d43554a1b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

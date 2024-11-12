@@ -1,0 +1,137 @@
+* {
+    font-family: monospace;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    border-bottom: 2px black solid;
+    pointer-events: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1b1b;
+    height: 100vh;
+}
+
+#calculator {
+    font-size: 35px;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    height: 540px;
+    background-color: black;
+    border-radius: 15px;
+    border: 2px solid gray;
+}
+
+#result_area {
+    font-size: 35px;
+    margin-right: -30px;
+    text-align: end;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    height: 100px;
+    width: 360px;
+    border-radius: 15px;
+    color: white;
+    background-color: black;
+    border: none;
+    pointer-events: none;
+
+}
+
+#result {
+    height: 60px;
+    width: 355px;
+}
+
+
+#project {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    font-size: 35px;
+    font-family: monospace;
+    cursor: pointer;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 40px;
+}
+
+
+
+.gray {
+    color: black;
+    background-color: #A7A6A7;
+}
+
+
+.dark_gray {
+    background-color: #333333;
+
+}
+
+.orange {
+    background-color: #FF9601;
+}
+
+#grid {
+    margin-top: 50px;
+    justify-items: center;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr
+}
+
+#zero,
+#delete {
+    width: 165px;
+    grid-column: span 2
+}
+
+
+.button:active {
+    font-size: 25px;
+    color: black;
+    background-color: burlywood;
+}
+
+em {
+    font-size: 20px;
+}
+
+
+
+
+#website {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+#sidebar {
+    flex: 1.5;
+    /* Sidebar will take 1 part of the available space */
+    background-color: #242527;
+    height: 100vh;
+    box-shadow: 3px 0px 20px black;
+}
